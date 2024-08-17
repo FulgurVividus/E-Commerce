@@ -45,4 +45,11 @@
   input[type="search"]::-webkit-search-results-decoration {
     display: none;
   }
+
+  /* sticky navbar */
+  .sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+  }
 }

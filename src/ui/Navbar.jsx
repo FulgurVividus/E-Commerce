@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
+import { useEffect, useRef, useState } from "react";
 
 function Navbar() {
+  const [scroll, setScroll] = useState(false);
+
+  useEffect(function () {
+    window.addEventListener("scroll", function () {
+      setScroll(window.scrollY > 10);
+    });
+  });
+
   return (
     <>
-      <nav>
+      <nav className={`${scroll ? "sticky" : ""}`}>
         <ul className="flex justify-between items-center py-2 px-2 md:px-3 bg-gray-100">
           <div>
             <li className="font-bold text-lg md:text-xl">
