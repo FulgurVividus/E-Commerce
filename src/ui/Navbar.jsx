@@ -12,7 +12,7 @@ function Navbar() {
             </li>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col md:flex-row items-end md:items-center gap-3">
             <li>
               <input
                 type="search"
