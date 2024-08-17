@@ -1,0 +1,31 @@
+#1 Stack / Libraries:
+- React.js
+- Tailwind CSS
+- Vite
+- React Icons
+- React Router
+- Redux Toolkit
+- fetch API
+- Swiper
+
+#2 API:
+https://dummyjson.com/products?limit=100
+
+#3 Features:
+- Pagination:
+    -> 12 products per page (overall 100 products)
+    -> Next and Previous buttons
+    -> Current page number
+    -> Total number of pages
+
+- Detailed product page information:
+    -> Title
+    -> Description
+    -> Image
+    -> Price
+    -> Quantity
+    -> Price with quantity
+
+- Main Page functionality:
+    -> Search 
+    -> Filters (price, quantity, category: [beauty, fragrances, furniture, groceries, home-decoration, kitchen-accessories, laptops, mens-shirts, mens-shoes, mens-watches, mobile-accessories])
