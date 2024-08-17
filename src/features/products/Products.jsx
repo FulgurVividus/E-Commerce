@@ -40,7 +40,7 @@ function Products() {
 
   return (
     <>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between items-center">
         <section className="flex flex-wrap gap-2 md:gap-3">
           {thisPageItems.map((product) => (
             <ProductsItem key={product.id} product={product} />
