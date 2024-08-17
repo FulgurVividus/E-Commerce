@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BsCart4 } from "react-icons/bs";
 
 function Navbar() {
   return (
@@ -20,7 +21,10 @@ function Navbar() {
               />
             </li>
             <li className="font-semibold text-sm md:text-base">
-              <Link to="/basket">Basket</Link>
+              <Link to="/basket" className="flex items-center gap-2">
+                <span>Basket</span>
+                <BsCart4 />
+              </Link>
             </li>
           </div>
         </ul>
