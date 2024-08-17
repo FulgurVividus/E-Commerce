@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Navbar() {
   const [scroll, setScroll] = useState(false);
