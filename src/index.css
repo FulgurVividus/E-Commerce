@@ -61,13 +61,13 @@
   }
 
   .pagination button {
-    padding: 10px;
+    padding: 5px 10px;
   }
 
   .active {
     background: black;
     color: #fff;
     border: 1px solid #fff;
-    border-radius: 5px;
+    border-radius: 50%;
   }
 }
