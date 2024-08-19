@@ -1,9 +1,26 @@
 import { Link } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import FilteredProducts from "../features/products/FilteredProducts";
 
 function Navbar() {
   const [scroll, setScroll] = useState(false);
+  const [search, setSearch] = useState("");
+
+  // exact products on each page
+  const productsPaginated = useSelector(
+    (state) => state.products.productsPaginated
+  );
+  // console.log(productsPaginated);
+
+  const filteredProducts = () => {
+    return search
+      ? productsPaginated.filter((product) =>
+          product.title.toLowerCase().includes(search.toLowerCase())
+        )
+      : productsPaginated;
+  };
 
   useEffect(function () {
     window.addEventListener("scroll", function () {
@@ -26,6 +43,8 @@ function Navbar() {
               <input
                 type="search"
                 placeholder="Search..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 className="border-2 border-gray-400 rounded-2xl py-1 px-1 md:px-2 focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50  text-black duration-300"
               />
             </li>
@@ -37,6 +56,17 @@ function Navbar() {
             </li>
           </div>
         </ul>
+
+        {/* Filtered Products */}
+        {search && (
+          <ul>
+            {filteredProducts.length > 0 ? (
+              <FilteredProducts filteredProducts={filteredProducts} />
+            ) : (
+              <li>No products found</li>
+            )}
+          </ul>
+        )}
       </nav>
     </>
   );

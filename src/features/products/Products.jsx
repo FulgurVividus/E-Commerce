@@ -3,10 +3,13 @@ import getProducts from "../../services/fetchProductsApi";
 import ProductsItem from "./ProductsItem";
 import Loader from "../../common/Loader";
 import Pagination from "../../ui/Pagination";
+import { useDispatch } from "react-redux";
+import { addProductsPaginated } from "./productsSlice";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(12);
@@ -35,6 +38,15 @@ function Products() {
     }
     fetchProducts();
   }, []);
+
+  useEffect(
+    function () {
+      if (thisPageItems.length > 0) {
+        dispatch(addProductsPaginated(thisPageItems));
+      }
+    },
+    [dispatch, thisPageItems, currentPage, productsPerPage, products]
+  );
 
   if (isLoading) return <Loader />;
 
