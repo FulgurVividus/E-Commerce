@@ -5,11 +5,11 @@ import Loader from "../../common/Loader";
 function ProductsItemDetail() {
   const location = useLocation();
   const product = location.state.product;
-  console.log(product);
+  // console.log(product);
 
   if (!product) return <Loader />;
 
-  const { title, description, price, rating, reviews, stock } = product;
+  const { title, description, price, rating, stock } = product;
 
   return (
     <>
