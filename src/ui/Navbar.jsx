@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -7,26 +7,42 @@ import FilteredProducts from "../features/products/FilteredProducts";
 function Navbar() {
   const [scroll, setScroll] = useState(false);
   const [search, setSearch] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const location = useLocation();
 
   // exact products on each page
   const productsPaginated = useSelector(
     (state) => state.products.productsPaginated
   );
-  // console.log(productsPaginated);
 
-  const filteredProducts = () => {
-    return search
-      ? productsPaginated.filter((product) =>
-          product.title.toLowerCase().includes(search.toLowerCase())
-        )
-      : productsPaginated;
-  };
+  function handleInputChange(e) {
+    const search = e.target.value;
+    setSearch(search);
 
-  useEffect(function () {
-    window.addEventListener("scroll", function () {
-      setScroll(window.scrollY > 10);
-    });
-  });
+    const filteredProducts = productsPaginated.filter((product) =>
+      product.title.toLowerCase().includes(search.toLowerCase())
+    );
+    setFilteredProducts(filteredProducts);
+  }
+
+  // sticky navbar
+  // useEffect(function () {
+  //   function handleScroll() {
+  //     setScroll(window.scrollY > 10);
+  //   }
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
+
+  // some resets
+  useEffect(
+    function () {
+      setSearch("");
+      setFilteredProducts([]);
+    },
+    [location]
+  );
 
   return (
     <>
@@ -44,7 +60,7 @@ function Navbar() {
                 type="search"
                 placeholder="Search..."
                 value={search}
-                onChange={(e) => setSearch(e.target.value)}
+                onChange={handleInputChange}
                 className="border-2 border-gray-400 rounded-2xl py-1 px-1 md:px-2 focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50  text-black duration-300"
               />
             </li>
@@ -58,15 +74,16 @@ function Navbar() {
         </ul>
 
         {/* Filtered Products */}
-        {search && (
-          <ul>
-            {filteredProducts.length > 0 ? (
-              <FilteredProducts filteredProducts={filteredProducts} />
-            ) : (
-              <li>No products found</li>
-            )}
-          </ul>
-        )}
+        <ul>
+          {search && filteredProducts.length > 0 && (
+            <>
+              <FilteredProducts
+                filteredProducts={filteredProducts}
+                search={search}
+              />
+            </>
+          )}
+        </ul>
       </nav>
     </>
   );
