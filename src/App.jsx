@@ -3,6 +3,7 @@ import Navbar from "./ui/Navbar";
 import Home from "./ui/Home";
 import ProductsItemDetail from "./features/products/ProductsItemDetail";
 import Basket from "./features/basket/Basket";
+import PageNotFound from "./common/PageNotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/products/:id" exact element={<ProductsItemDetail />} />
           <Route path="/basket" exact element={<Basket />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </>
