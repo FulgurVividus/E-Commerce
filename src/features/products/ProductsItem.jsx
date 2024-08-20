@@ -15,7 +15,7 @@ function ProductsItem({ product }) {
           <img
             src={product.images.at(0)}
             alt={product.title}
-            className="object-contain max-w-full max-h-full"
+            className="object-contain max-w-full max-h-full select-none"
           />
         </div>
 
