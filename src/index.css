@@ -70,4 +70,14 @@
     border: 1px solid #fff;
     border-radius: 50%;
   }
+
+  /* hide scrollbar */
+  html {
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
 }
