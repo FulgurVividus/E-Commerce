@@ -1,11 +1,17 @@
 import { useLocation } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import Loader from "../../common/Loader";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../basket/basketSlice";
 
 function ProductsItemDetail() {
   const location = useLocation();
   const product = location.state.product;
   // console.log(product);
+
+  const dispatch = useDispatch();
+  const [isAdded, setIsAdded] = useState(false);
 
   if (!product) return <Loader />;
 
@@ -42,8 +48,19 @@ function ProductsItemDetail() {
               <span className="font-bold">Quantity:</span> {stock}
             </p>
 
-            <button className="max-w-fit bg-black p-3 rounded-3xl text-white hover:scale-105 duration-200 flex items-center gap-1">
-              Add to Basket
+            <button
+              className={
+                isAdded
+                  ? "cursor-not-allowed detail-page-button"
+                  : "detail-page-button"
+              }
+              disabled={isAdded}
+              onClick={() => {
+                dispatch(addItem(product));
+                setIsAdded(true);
+              }}
+            >
+              {isAdded ? "Added to basket" : "Add to Basket"}
               <span>
                 <BsCart4 />
               </span>

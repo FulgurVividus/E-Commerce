@@ -1,4 +1,6 @@
 function BasketItem() {
+  // needs to accept product
+
   return <div>BasketItem</div>;
 }
 
