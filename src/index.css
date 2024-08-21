@@ -80,4 +80,9 @@
     width: 0;
     background: transparent;
   }
+
+  /* button */
+  .detail-page-button {
+    @apply max-w-fit bg-black p-3 rounded-3xl text-white hover:scale-105 duration-200 flex items-center gap-1;
+  }
 }
