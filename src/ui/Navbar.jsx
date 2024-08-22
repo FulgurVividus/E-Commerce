@@ -10,6 +10,8 @@ function Navbar() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const location = useLocation();
 
+  const isBasketPage = location.pathname === "/basket";
+
   // exact products on each page
   const productsPaginated = useSelector(
     (state) => state.products.productsPaginated
@@ -61,7 +63,11 @@ function Navbar() {
                 placeholder="Search..."
                 value={search}
                 onChange={handleInputChange}
-                className="border-2 border-gray-400 rounded-2xl py-1 px-1 md:px-2 focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50  text-black duration-300"
+                className={
+                  isBasketPage
+                    ? "hidden"
+                    : "border-2 border-gray-400 rounded-2xl py-1 px-1 md:px-2 focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-50  text-black duration-300"
+                }
               />
             </li>
             <li className="font-semibold text-sm md:text-base">
