@@ -6,7 +6,6 @@
 - React Router
 - Redux Toolkit
 - fetch API
-- Swiper
 
 #2 API:
 https://dummyjson.com/products?limit=100
@@ -25,9 +24,8 @@ https://dummyjson.com/products?limit=100
     -> Rating
     -> Quantity
 
-- Main Page functionality:
+- Main Page functionality: ✅
     -> Search 
-    -> Filters (price, quantity, category: [beauty, fragrances, furniture, groceries, home-decoration, kitchen-accessories, laptops, mens-shirts, mens-shoes, mens-watches, mobile-accessories])
 
 - Basket: ✅
     -> Add item
