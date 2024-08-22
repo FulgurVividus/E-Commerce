@@ -16,6 +16,7 @@ function Pagination({
         {pages.map((page, index) => (
           <button
             key={index}
+            title="Pagination button"
             className={currentPage === page ? "active" : ""}
             onClick={() => handlePagination(page)}
           >

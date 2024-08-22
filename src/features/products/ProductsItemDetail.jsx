@@ -55,6 +55,7 @@ function ProductsItemDetail() {
                   : "detail-page-button"
               }
               disabled={isAdded}
+              title="Add(ed)"
               onClick={() => {
                 dispatch(addItem(product));
                 setIsAdded(true);
