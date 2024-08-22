@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   basket: [],
+  isEmpty: true,
 };
 
 const basketSlice = createSlice({
@@ -11,6 +12,7 @@ const basketSlice = createSlice({
     addItem(state, action) {
       // payload = newItem
       state.basket.push(action.payload);
+      state.isEmpty = false;
     },
     deleteItem(state, action) {
       // payload = itemId
@@ -18,6 +20,7 @@ const basketSlice = createSlice({
     },
     clearBasket(state) {
       state.basket = [];
+      state.isEmpty = true;
     },
   },
 });
