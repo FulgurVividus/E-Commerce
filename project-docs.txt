@@ -29,10 +29,10 @@ https://dummyjson.com/products?limit=100
     -> Search 
     -> Filters (price, quantity, category: [beauty, fragrances, furniture, groceries, home-decoration, kitchen-accessories, laptops, mens-shirts, mens-shoes, mens-watches, mobile-accessories])
 
-- Basket: 
+- Basket: ✅
     -> Add item
     -> Delete item
     -> Clear basket
 
-- Design:
+- Design: ✅
     -> Fully responsive
