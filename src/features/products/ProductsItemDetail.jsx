@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import Loader from "../../common/Loader";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../basket/basketSlice";
 
 function ProductsItemDetail() {
@@ -10,8 +10,18 @@ function ProductsItemDetail() {
   const product = location.state.product;
   // console.log(product);
 
+  const basket = useSelector((state) => state.basket.basket);
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
+
+  useEffect(
+    function () {
+      if (basket.some((item) => item.id === product.id)) {
+        setIsAdded(true);
+      }
+    },
+    [basket, product.id]
+  );
 
   if (!product) return <Loader />;
 
@@ -57,8 +67,10 @@ function ProductsItemDetail() {
               disabled={isAdded}
               title="Add(ed)"
               onClick={() => {
-                dispatch(addItem(product));
-                setIsAdded(true);
+                if (!isAdded) {
+                  dispatch(addItem(product));
+                  setIsAdded(true);
+                }
               }}
             >
               {isAdded ? "Added to basket" : "Add to Basket"}
