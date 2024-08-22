@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import FilteredProducts from "../features/products/FilteredProducts";
 
 function Navbar() {
-  const [scroll, setScroll] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const location = useLocation();
@@ -17,6 +16,7 @@ function Navbar() {
     (state) => state.products.productsPaginated
   );
 
+  // searching functionality
   function handleInputChange(e) {
     const search = e.target.value;
     setSearch(search);
@@ -26,16 +26,6 @@ function Navbar() {
     );
     setFilteredProducts(filteredProducts);
   }
-
-  // sticky navbar
-  // useEffect(function () {
-  //   function handleScroll() {
-  //     setScroll(window.scrollY > 10);
-  //   }
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
 
   // some resets
   useEffect(
@@ -48,7 +38,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className={`${scroll ? "sticky" : ""}`}>
+      <nav>
         <ul className="flex justify-between items-center py-2 px-2 md:px-3 bg-gray-100">
           <div>
             <li className="font-bold text-lg md:text-xl">
@@ -70,6 +60,7 @@ function Navbar() {
                 }
               />
             </li>
+
             <li className="font-semibold text-sm md:text-base">
               <Link to="/basket" className="flex items-center gap-2">
                 <span>Basket</span>
@@ -79,7 +70,7 @@ function Navbar() {
           </div>
         </ul>
 
-        {/* Filtered Products */}
+        {/* Searched Products */}
         <ul>
           {search && filteredProducts.length > 0 && (
             <>
