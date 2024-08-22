@@ -4,7 +4,7 @@ import BasketItem from "./BasketItem";
 
 function Basket() {
   const addedProducts = useSelector((state) => state.basket.basket);
-  const isEmpty = useSelector((state) => state.basket.isEmpty);
+  const isEmpty = addedProducts.length === 0;
   const dispatch = useDispatch();
   // console.log(addedProducts);
 
