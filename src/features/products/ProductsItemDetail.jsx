@@ -37,6 +37,7 @@ function ProductsItemDetail() {
               src={product?.images?.at(0)}
               alt={title}
               className="object-contain max-w-full max-h-full select-none"
+              loading="lazy"
             />
           </div>
 

@@ -23,6 +23,7 @@ function FilteredProducts({ filteredProducts, search }) {
                 src={product.images.at(0)}
                 alt={product.title}
                 className="object-contain max-w-full max-h-full"
+                loading="lazy"
               />
             </div>
 
