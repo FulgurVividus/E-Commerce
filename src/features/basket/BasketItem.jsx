@@ -1,6 +1,7 @@
+import { memo } from "react";
 import DeleteItem from "./DeleteItem";
 
-function BasketItem({ product }) {
+const BasketItem = memo(function BasketItem({ product }) {
   return (
     <>
       <div className="w-full flex justify-between items-center md:items-start md:flex-col bg-gray-300 py-2 px-3 h-[250px] md:w-[200px] md:h-[290px]">
@@ -24,6 +25,6 @@ function BasketItem({ product }) {
       </div>
     </>
   );
-}
+});
 
 export default BasketItem;

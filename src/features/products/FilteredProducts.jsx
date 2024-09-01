@@ -1,6 +1,10 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
-function FilteredProducts({ filteredProducts, search }) {
+const FilteredProducts = memo(function FilteredProducts({
+  filteredProducts,
+  search,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -37,6 +41,6 @@ function FilteredProducts({ filteredProducts, search }) {
       <div className="h-[1px] w-full my-5 border-[1px] border-black border-dashed"></div>
     </>
   );
-}
+});
 
 export default FilteredProducts;

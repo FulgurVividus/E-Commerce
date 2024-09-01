@@ -1,11 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { BsCart4 } from "react-icons/bs";
 import Loader from "../../common/Loader";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../basket/basketSlice";
 
-function ProductsItemDetail() {
+const ProductsItemDetail = memo(function ProductsItemDetail() {
   const location = useLocation();
   const product = location.state.product;
   // console.log(product);
@@ -84,6 +84,6 @@ function ProductsItemDetail() {
       </div>
     </>
   );
-}
+});
 
 export default ProductsItemDetail;

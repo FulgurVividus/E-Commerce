@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProductsItem({ product }) {
+const ProductsItem = memo(function ProductsItem({ product }) {
   const navigate = useNavigate();
 
   return (
@@ -27,6 +28,6 @@ function ProductsItem({ product }) {
       </div>
     </>
   );
-}
+});
 
 export default ProductsItem;
