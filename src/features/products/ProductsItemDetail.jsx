@@ -34,10 +34,10 @@ const ProductsItemDetail = memo(function ProductsItemDetail() {
           {/* Image */}
           <div className="h-56 flex justify-center items-center overflow-hidden">
             <img
+              loading="lazy"
               src={product?.images?.at(0)}
               alt={title}
               className="object-contain max-w-full max-h-full select-none"
-              loading="lazy"
             />
           </div>
 
